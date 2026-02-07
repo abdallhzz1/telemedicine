@@ -1,0 +1,338 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cairo:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Telemedicine Design System - Dark Medical Tech Theme */
+
+@layer base {
+  :root {
+    /* Premium Medical Tech Light Theme - Clean Professional Palette */
+
+    /* Soft Blue-Gray Backgrounds */
+    --background: 210 40% 98%;
+    /* #F8FAFC - Very light background */
+    --foreground: 222 47% 11%;
+    /* #0F172A - Deep blue-black for text */
+
+    /* Clean Simple Cards */
+    --card: 0 0% 100%;
+    /* #FFFFFF - Pure white cards */
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Primary - Medical Teal/Cyan */
+    --primary: 186 100% 35%;
+    /* Darker medical cyan for better contrast */
+    --primary-foreground: 210 40% 98%;
+
+    /* Secondary - Light Sky Blue */
+    --secondary: 210 40% 92%;
+    /* Darker secondary */
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 92%;
+    --muted-foreground: 215 16% 35%;
+    /* Darker muted gray */
+
+    /* Accent - Health Cyan */
+    --accent: 189 94% 35%;
+    /* Darker accent */
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 45%;
+    /* Darker destructive */
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 32% 80%;
+    /* Stronger borders */
+    --input: 214 32% 80%;
+    --ring: 186 100% 35%;
+
+    --radius: 0.75rem;
+
+    /* Sidebar - Light */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 186 100% 35%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 210 40% 92%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 214 32% 80%;
+    --sidebar-ring: 186 100% 35%;
+
+    /* Advanced Glassmorphism for Light Mode - More Opaque for Readability */
+    --glass-bg: rgba(255, 255, 255, 0.9);
+    --glass-border: rgba(6, 182, 212, 0.3);
+    --glass-blur: 20px;
+
+    --gradient-primary: linear-gradient(135deg, #028d97 0%, #0891b2 100%);
+    --gradient-hover: linear-gradient(135deg, #0891b2 0%, #028d97 100%);
+    --gradient-glow: 0 4px 20px rgba(6, 182, 212, 0.3);
+
+    /* Overlay for backgrounds - More solid for better text contrast */
+    --overlay: rgba(248, 250, 252, 0.95);
+
+    --shadow-glass: 0 8px 32px rgba(15, 23, 42, 0.12);
+    --shadow-glow: 0 0 15px rgba(6, 182, 212, 0.2);
+
+    /* Semantic Colors */
+    --success: 160 84% 30%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 40%;
+    --warning-foreground: 222 47% 11%;
+    --info: 217 91% 45%;
+    --info-foreground: 210 40% 98%;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --card: 217 33% 17%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 186 100% 42%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 215 25% 27%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 189 94% 43%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 217 33% 20%;
+    --input: 217 33% 17%;
+    --ring: 186 100% 42%;
+
+    /* Advanced Glassmorphism for Dark Mode */
+    --glass-bg: rgba(15, 23, 42, 0.6);
+    --glass-border: rgba(6, 182, 212, 0.2);
+    --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --shadow-glow: 0 0 20px rgba(6, 182, 212, 0.25);
+    --overlay: rgba(15, 23, 42, 0.85);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    touch-action: manipulation;
+  }
+
+  html[dir="rtl"] {
+    font-family: 'Cairo', 'Inter', sans-serif;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  /* Prevent iOS input zoom */
+  @media screen and (max-width: 768px) {
+
+    input,
+    select,
+    textarea {
+      font-size: 16px !important;
+    }
+  }
+}
+
+@layer components {
+
+  /* Glassmorphism Card */
+  .glass-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    box-shadow: var(--shadow-glass);
+    border-radius: var(--radius);
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300;
+  }
+
+  .glass-card-hover:hover {
+    box-shadow: var(--shadow-glow);
+    border-color: rgba(61, 224, 230, 0.5);
+  }
+
+  /* Gradient Button */
+  .btn-gradient {
+    background: var(--gradient-primary);
+    color: hsl(var(--primary-foreground));
+    border: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-gradient:hover {
+    background: var(--gradient-hover);
+    box-shadow: var(--gradient-glow);
+    transform: translateY(-1px);
+  }
+
+  /* Glow Effect */
+  .glow-accent {
+    box-shadow: 0 0 15px rgba(61, 224, 230, 0.3);
+  }
+
+  .glow-accent-hover:hover {
+    box-shadow: 0 0 25px rgba(61, 224, 230, 0.5);
+  }
+
+  /* Status Badges */
+  .badge-status {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+  }
+
+  .badge-upcoming {
+    @apply badge-status;
+    background: rgba(47, 184, 198, 0.2);
+    color: hsl(var(--primary));
+    border: 1px solid rgba(47, 184, 198, 0.3);
+  }
+
+  .badge-completed {
+    @apply badge-status;
+    background: rgba(34, 197, 94, 0.2);
+    color: hsl(var(--success));
+    border: 1px solid rgba(34, 197, 94, 0.3);
+  }
+
+  .badge-cancelled {
+    @apply badge-status;
+    background: rgba(239, 68, 68, 0.2);
+    color: hsl(var(--destructive));
+    border: 1px solid rgba(239, 68, 68, 0.3);
+  }
+
+  .badge-pending {
+    @apply badge-status;
+    background: rgba(234, 179, 8, 0.2);
+    color: hsl(var(--warning));
+    border: 1px solid rgba(234, 179, 8, 0.3);
+  }
+
+  /* Sidebar Active State */
+  .sidebar-item-active {
+    background: var(--glass-bg);
+    border-left: 3px solid hsl(var(--accent));
+    color: hsl(var(--accent));
+  }
+
+  html[dir="rtl"] .sidebar-item-active {
+    border-left: none;
+    border-right: 3px solid hsl(var(--accent));
+  }
+
+  /* Input Focus Glow */
+  .input-glow:focus {
+    box-shadow: 0 0 0 2px rgba(61, 224, 230, 0.3);
+    border-color: hsl(var(--accent));
+  }
+
+  /* Table Styles */
+  .table-glass {
+    @apply glass-card overflow-hidden;
+  }
+
+  .table-glass th {
+    @apply bg-secondary/30 text-muted-foreground font-medium;
+  }
+
+  .table-glass tr:hover {
+    @apply bg-secondary/20;
+  }
+
+  /* Scrollbar Styles */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--secondary));
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary));
+  }
+
+  /* Page Transition */
+  .page-enter {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  .page-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  /* Loading Pulse */
+  .loading-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  /* Stat Card */
+  .stat-card {
+    @apply glass-card-hover p-6 relative overflow-hidden;
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gradient-primary);
+  }
+
+  html[dir="rtl"] .stat-card::before {
+    left: auto;
+    right: 0;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
